@@ -1,0 +1,318 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Finalizar Pedido</title>
+
+<style>
+:root {
+  --marrom: #4a2a1a;
+  --vermelho: #b22222;
+  --dourado: #f5c16c;
+}
+
+* {
+  box-sizing: border-box;
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+body {
+  margin: 0;
+  background: url("img/fundo.jpg") center/cover fixed no-repeat;
+  min-height: 100vh;
+}
+
+.tipo-container {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 10px;
+}
+
+.tipo-opcao {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+}
+
+.overlay {
+  background: rgba(0,0,0,.6);
+  min-height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 15px;
+}
+
+.container {
+  background: rgba(255,255,255,.95);
+  width: 100%;
+  max-width: 420px;
+  border-radius: 15px;
+  padding: 20px;
+  box-shadow: 0 0 20px rgba(0,0,0,.4);
+}
+
+h2 {
+  text-align: center;
+  margin: 0 0 15px;
+  color: var(--vermelho);
+}
+
+label {
+  font-weight: bold;
+  display: block;
+  margin-top: 12px;
+}
+
+input, select, textarea {
+  width: 100%;
+  padding: 10px;
+  border-radius: 8px;
+  border: 1px solid #ccc;
+  margin-top: 5px;
+  font-size: 1rem;
+}
+
+textarea {
+  resize: none;
+}
+
+button {
+  margin-top: 15px;
+  background: linear-gradient(135deg, #25d366, #1eb856);
+  border: none;
+  color: #fff;
+  font-size: 1.1rem;
+  padding: 12px;
+  width: 100%;
+  border-radius: 10px;
+  cursor: pointer;
+}
+
+.voltar {
+  text-align: center;
+  margin-top: 12px;
+
+
+}
+
+.topo {
+  text-align: center;
+  margin-bottom: 10px;
+}
+
+.produto-box {
+  background: #f7f2ed;
+  border-left: 5px solid var(--vermelho);
+  padding: 10px;
+  border-radius: 8px;
+  margin-bottom: 10px;
+  font-weight: bold;
+  color: var(--marrom);
+}
+
+.voltar img{
+  width:40px;
+}
+</style>
+</head>
+
+<body>
+
+<div class="overlay">
+<div class="container">
+
+<div class="topo">
+<h2>Finalizar Pedido</h2>
+</div>
+
+<div id="produtoBox"></div>
+
+<form onsubmit="enviarPedido(); return false;">
+
+<label>Nome</label>
+<input type="text" id="nome" required>
+
+<label>Endereço</label>
+<input type="text" id="endereco">
+
+<label>Bairro</label>
+<input type="text" id="bairro">
+
+<label>Forma de pagamento</label>
+<select id="pagamento" onchange="verificarPagamento()">
+<option value="">Selecione</option>
+<option value="dinheiro">Dinheiro</option>
+<option value="pix">Pix</option>
+
+</select>
+
+<div id="campoTroco" style="display:none;">
+<label>Troco para quanto?</label>
+<input type="text" id="troco">
+</div>
+
+<div class="tipo-container">
+
+<div class="tipo-opcao">
+<label for="entrega">Entrega</label>
+<input type="radio" name="tipo" id="entrega" value="entrega" onclick="calcularTotal()">
+</div>
+
+<div class="tipo-opcao">
+<label for="retirada">Retirada</label>
+<input type="radio" name="tipo" id="retirada" value="retirada" onclick="calcularTotal()">
+</div>
+
+</div>
+
+<p id="subtotal">Subtotal: R$ 0.00</p>
+<p id="taxaEntrega">Taxa de entrega: R$ 0.00</p>
+<h3 id="total">Total: R$ 0.00</h3>
+
+<label>Observações:</label>
+<textarea id="obs" rows="3" placeholder="Ex: Feijao caldo ou farofa, tipo de carne "></textarea>
+
+<button type="submit">Enviar Pedido no WhatsApp</button>
+
+</form>
+
+<div class="voltar">
+<a href="index.html">VOLTAR</a>
+</div>
+
+</div>
+</div>
+
+<script>
+
+const dados = JSON.parse(localStorage.getItem("pedido")) || [];
+
+let resumoHTML = "";
+let mensagemProdutos = "";
+let totalProdutos = 0;
+
+dados.forEach(item => {
+
+  let subtotal = item.preco * item.qtd;
+  totalProdutos += subtotal;
+
+  resumoHTML += `
+  <div class="produto-box">
+  ${item.nome} - ${item.qtd}x - R$ ${subtotal.toFixed(2)}
+  </div>
+  `;
+
+  mensagemProdutos +=
+  `🍽 ${item.nome} - ${item.qtd}x - R$ ${subtotal.toFixed(2)}\n`;
+
+});
+
+document.getElementById("produtoBox").innerHTML = resumoHTML;
+
+document.getElementById("subtotal").innerText =
+"Subtotal: R$ " + totalProdutos.toFixed(2);
+
+let taxaEntrega = 3;
+
+function calcularTotal(){
+
+let tipo = document.querySelector('input[name="tipo"]:checked');
+let taxa = 0;
+
+if(tipo && tipo.value === "entrega"){
+taxa = taxaEntrega;
+}
+
+let totalFinal = totalProdutos + taxa;
+
+document.getElementById("taxaEntrega").innerText =
+"Taxa de entrega: R$ " + taxa.toFixed(2);
+
+document.getElementById("total").innerText =
+"Total: R$ " + totalFinal.toFixed(2);
+
+}
+
+function verificarPagamento(){
+
+const pagamento = document.getElementById("pagamento").value;
+const campoTroco = document.getElementById("campoTroco");
+
+if(pagamento === "dinheiro"){
+campoTroco.style.display = "block";
+}else{
+campoTroco.style.display = "none";
+}
+
+}
+
+function enviarPedido(){
+
+const nome = document.getElementById("nome").value;
+const endereco = document.getElementById("endereco").value;
+const bairro = document.getElementById("bairro").value;
+const pagamento = document.getElementById("pagamento").value;
+const obs = document.getElementById("obs").value;
+const troco = document.getElementById("troco").value;
+
+
+let tipoSelecionado = document.querySelector('input[name="tipo"]:checked');
+
+if(!tipoSelecionado){
+alert("Escolha Entrega ou Retirada!");
+return;
+}
+
+let tipo = tipoSelecionado.value;
+let taxa = 0;
+
+if(tipo === "entrega"){
+taxa = taxaEntrega;
+}
+
+let totalFinal = totalProdutos + taxa;
+
+
+navigator.geolocation.getCurrentPosition(function(pos){
+
+let latitude = pos.coords.latitude;
+let longitude = pos.coords.longitude;
+
+let linkLocalizacao = `https://www.google.com/maps?q=${latitude},${longitude}`;
+
+let mensagem =
+`Olá Alê! Gostaria de fazer o seguinte pedido:
+
+${mensagemProdutos}
+
+Subtotal: R$ ${totalProdutos.toFixed(2)}
+🚚 Taxa de entrega: R$ ${taxa.toFixed(2)}
+💵 Total: R$ ${totalFinal.toFixed(2)}
+
+🚚 Tipo: ${tipo}
+👤 Nome: ${nome}
+💳 Pagamento: ${pagamento}
+📱 Pix para pagamento: 49.729.256/0001-23
+💰 Troco: ${pagamento === "dinheiro" ? troco : "Não precisa"}
+${tipo === "entrega" ? `🏠 Endereço: ${endereco}\n📍 Bairro: ${bairro}` : "📍 Retirada no local"}
+📌 Localização: ${linkLocalizacao} 
+📝 Observações: ${obs || "Nenhuma"}
+`;
+
+let numero = "5538984180596";
+let url = `https://wa.me/${numero}?text=${encodeURIComponent(mensagem)}`;
+
+window.location.href = url;
+
+localStorage.removeItem("pedido");
+
+});
+
+}
+
+</script>
+
+</body>
+</html>

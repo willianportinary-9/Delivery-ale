@@ -1,0 +1,466 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Delivery da Alê</title>
+<link rel="icon" href="img/logoaletransparente (1).png" type="image/png">
+ 
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600;700&family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet">
+
+  <style>
+    :root {
+      --marrom: #3b1f14;
+      --vermelho: #c0392b;
+      --dourado: #f1c40f;
+      --claro: #f7f3ef;
+    }
+
+    * {
+      box-sizing: border-box;
+      font-family: 'Poppins', sans-serif;
+    }
+
+    body {
+      margin: 0;
+      background: linear-gradient(rgba(0,0,0,.55), rgba(0,0,0,.55)), url("img/fundo.jpg") center/cover fixed no-repeat;
+      color: #333;
+    }
+
+    header {
+      display:flex;
+flex-direction:column;
+align-items:center;
+text-align:center;
+padding:25px 15px 10px;
+background:linear-gradient(rgba(0,0,0,.65),rgba(0,0,0,.65));
+    }
+
+    header h1 {
+      font-family: 'Playfair Display', serif;
+      font-size: 3.2rem;
+      margin-bottom: 5px;
+      margin: 0;
+      color: var(--dourado);
+      letter-spacing: 2px;
+    }
+header h1 img{
+width:280px;
+max-width:90%;
+}
+    header p{
+font-size:1rem;
+margin:6px 0 10px;
+color:#fff;
+max-width:450px;
+}
+
+    .cta {
+      margin-top: 25px;
+      padding: 12px 28px;
+      background: var(--vermelho);
+      color: #fff;
+      border-radius: 30px;
+      text-decoration: none;
+      font-weight: 500;
+      transition: 0.3s;
+    }
+
+    .cta:hover {
+      transform: scale(1.05);
+      background: #be5248;
+    }
+
+    .info {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 12px;
+      background: rgba(0,0,0,.85);
+      color: #fff;
+      padding: 20px;
+      text-align: center;
+      font-size: .9rem;
+    }
+
+    .container {
+      max-width: 1200px;
+      margin: 40px auto;
+      background: rgba(255,255,255,.96);
+      border-radius: 20px;
+      padding: 30px 20px 40px;
+      box-shadow: 0 10px 25px rgba(0,0,0,.3);
+    }
+
+    h2 {
+      text-align: center;
+      font-size: 2.2rem;
+      color: var(--vermelho);
+      margin-bottom: 25px;
+    }
+
+    .cardapio {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+      gap: 22px;
+    }
+
+    .item {
+      background: #fff;
+      border-radius: 18px;
+      overflow: hidden;
+      box-shadow: 0 6px 15px rgba(0,0,0,.15);
+      display: flex;
+      flex-direction: column;
+      transition: .3s;
+    }
+
+    .item:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 10px 25px rgba(0,0,0,.25);
+    }
+
+    .item img {
+      width: 100%;
+      height: 190px;
+      object-fit: cover;
+    }
+
+    .item div {
+      padding: 15px;
+      flex: 1;
+    }
+
+    .item h3 {
+      margin: 0 0 6px;
+      color: var(--marrom);
+      font-size: 1.2rem;
+    }
+
+    .item p {
+      margin: 3px 0;
+      font-size: .9rem;
+      color: #555;
+    }
+
+    .preco {
+      font-weight: 600;
+      font-size: 1.1rem;
+      color: var(--vermelho);
+      margin-top: 8px;
+    }
+
+    .btn {
+      border: none;
+      background: linear-gradient(135deg, var(--vermelho), #fd0606);
+      color: #f8eded;
+      padding: 25px;
+      font-size: 1rem;
+      cursor: pointer;
+      transition: .3s;
+    }
+
+    .btn:hover {
+      filter: brightness(1.15);
+    }
+
+    footer {
+      background: #2b150c;
+      color: #fff;
+      text-align: center;
+      padding: 20px 10px;
+      font-size: .9rem;
+    }
+
+    @media(max-width: 600px) {
+      header h1 { font-size: 2.4rem; }
+      header p { font-size: 1rem; }
+    }
+  </style>
+</head>
+
+<body>
+
+<header>
+  <h1><img src="img/logoaletransparente (1).png" style="width: 400px;"></h1>
+  <p>Comida caseira feita com carinho, sabor e qualidade direto para sua casa.</p>
+  <a href="#cardapio" class="cta">Ver Cardápio</a>
+</header>
+
+<section class="info">
+  <div>📞 (38) 98418-0596</div>
+  <div>🕒 Sáb • Dom • 11h às 14h • Feriados </div>
+  <div>🚚 Entrega: 30 a 50 min</div>
+  <div>💳 Pagamento: Pix • Dinheiro</div>
+  <div>📱 Pix: 497292560001-23 </div>
+  <div>📍 Taxa: R$ 3,00</div>
+  <div>🏪 Rua José Cangussu Nº80 - Centro</div>
+  <div>🍽️ Todos os pratos servem 1 pessoa</div>
+</section>
+
+<div class="container" id="cardapio">
+  <h2>Cardápio</h2>
+
+  <div class="cardapio">
+
+    <div class="item">
+      <img src="img/fricasse.png">
+      <div>
+        <h3>Fricasse de Frango</h3>
+        <p>Fricassé, Arroz e batata palha.</p>
+        <p class="preco">R$ 25,00</p>
+      <div class="controle">
+      <button onclick="alterar('Fricasse de Frango',25,-1)">-</button>
+      <span id="Fricasse de Frango">0</span>
+      <button onclick="alterar('Fricasse de Frango',25,1)">+</button>
+    </div>
+      </div>
+      
+    </div>
+
+    <div class="item">
+      <img src="img/marmita1.jpg">
+      <div>
+        <h3>Prato Combinado</h3>
+        <p>Arroz, feijão de caldo ou farofa, bife de boi, porco ou frango, macarrão,batata frita e salada. (descreva como quer este prato nas observações)</p>
+        <p class="preco">R$ 20,00</p>
+      <div class="controle">
+      <button onclick="alterar('Prato Combinado',20,-1)">-</button>
+      <span id="Prato Combinado">0</span>
+      <button onclick="alterar('Prato Combinado',20,1)">+</button>
+    </div>
+      </div>
+      
+    </div>
+
+
+    <div class="item">
+      <img src="img/marmita5feijoada.jpg">
+      <div>
+        <h3>Feijoada Completa</h3>
+        <p>Feijoada, arroz, farofa, vinagrete.</p>
+        <p class="preco">R$ 20,00</p>
+      <div class="controle">
+      <button onclick="alterar('Feijoada Completa',20,-1)">-</button>
+      <span id="Feijoada Completa">0</span>
+      <button onclick="alterar('Feijoada Completa',20,1)">+</button>
+    </div>
+      </div>
+      
+    </div>
+
+
+    <div class="item">
+      <img src="img/marmita7parmegiana.jpg">
+      <div>
+        <h3>Parmegina Filé Mignon</h3>
+        <p>Filé mignon, arroz, purê de batata e batata palha.</p>
+        <p class="preco">R$ 30,00</p>
+      <div class="controle">
+      <button onclick="alterar('Parmegina Filé Mignon',30,-1)">-</button>
+      <span id="Parmegina Filé Mignon">0</span>
+      <button onclick="alterar('Parmegina Filé Mignon',30,1)">+</button>
+    </div>
+      </div>
+      
+    </div>
+    <div class="item">
+      <img src="img/marmita7parmegiana.jpg">
+      <div>
+        <h3>Parmegiana de Frango</h3>
+        <p>Frango, arroz, purê de batata e batata palha.</p>
+        <p class="preco">R$ 30,00</p>
+      <div class="controle">
+      <button onclick="alterar('Parmegiana de Frango',30,-1)">-</button>
+      <span id="Parmegiana de Frango">0</span>
+      <button onclick="alterar('Parmegiana de Frango',30,1)">+</button>
+    </div>
+      </div>
+      
+    </div>
+
+    <div class="item">
+      <img src="img/marmita6strogonoff.jpg">
+      <div>
+        <h3>Strogonoff Frango</h3>
+        <p>Frango, arroz e batata palha.</p>
+        <p class="preco">R$ 30,00</p>
+      <div class="controle">
+      <button onclick="alterar('Strogonoff Frango',30,-1)">-</button>
+      <span id="Strogonoff Frango">0</span>
+      <button onclick="alterar('Strogonoff Frango',30,1)">+</button>
+    </div>
+      </div>
+      
+    </div>
+
+    <div class="item">
+      <img src="img/marmita6strogonofffile.jpg">
+      <div>
+        <h3>Strogonoff File Mignon</h3>
+        <p>Filé mignon, arroz e batata palha.</p>
+        <p class="preco">R$ 30,00</p>
+      <div class="controle">
+      <button onclick="alterar('Strogonoff File Mignon',30,-1)">-</button>
+      <span id="Strogonoff File Mignon">0</span>
+      <button onclick="alterar('Strogonoff File Mignon',30,1)">+</button>
+    </div>
+      </div>
+      
+    </div>
+
+    <div class="item">
+      <img src="img/macarraocremoso.png">
+      <div>
+        <h3>Macarrao Cremoso</h3>
+        <p>Molho de tomate, molho branco, requeijão cremoso, milho verde, presunto de peito de peru, mussarela e bacon.</p>
+        <p class="preco">R$ 30,00</p>
+      <div class="controle">
+      <button onclick="alterar('Macarrao Cremoso',30,-1)">-</button>
+      <span id="Macarrao Cremoso">0</span>
+      <button onclick="alterar('Macarrao Cremoso',30,1)">+</button>
+    </div>
+      </div>
+      
+    </div>
+
+    <div class="item">
+      <img src="img/lasanha.jpg">
+      <div>
+        <h3>Lasanha</h3>
+        <p>Frango, carne moída, presunto e queijo.</p>
+        <p class="preco">R$ 25,00</p>
+      <div class="controle">
+      <button onclick="alterar('Lasanha',25,-1)">-</button>
+      <span id="Lasanha">0</span>
+      <button onclick="alterar('Lasanha',25,1)">+</button>
+    </div>
+      </div>
+      
+    </div>
+    
+    <div class="item">
+      <img src="img/lasanhafrita.jpg">
+      <div>
+        <h3>Lasanha Frita</h3>
+        <p>Arroz, salada e batata palha.</p>
+        <p class="preco">R$ 30,00</p>
+      <div class="controle">
+      <button onclick="alterar('Lasanha Frita',30,-1)">-</button>
+      <span id="Lasanha Frita">0</span>
+      <button onclick="alterar('Lasanha Frita',30,1)">+</button>
+    </div>
+      </div>
+      
+    </div>
+
+    <div class="item">
+      <img src="img/lasanhabolonhesa.png">
+      <div>
+        <h3>Lasanha Bolonhesa</h3>
+        <p>Arroz, salada e batata palha.</p>
+        <p class="preco">R$ 30,00</p>
+      <div class="controle">
+      <button onclick="alterar('Lasanha Bolonhesa',30,-1)">-</button>
+      <span id="Lasanha Bolonhesa">0</span>
+      <button onclick="alterar('Lasanha Bolonhesa',30,1)">+</button>
+    </div>
+      </div>
+      
+    </div>
+
+    <div class="item">
+      <img src="img/lasanhapresentoequeijo.png">
+      <div>
+        <h3>Lasanha Presunto e Queijo</h3>
+        <p>Arroz, salada e batata palha.</p>
+        <p class="preco">R$ 30,00</p>
+      <div class="controle">
+      <button onclick="alterar('Lasanha Presunto e Queijo',30,-1)">-</button>
+      <span id="Lasanha Presunto e Queijo">0</span>
+      <button onclick="alterar('Lasanha Presunto e Queijo',30,1)">+</button>
+    </div>
+      </div>
+      
+    </div>
+
+  </div>
+</div>
+<button class="btn" style="margin-top:20px;width:100%;" onclick="finalizar()">
+Finalizar Pedido
+</button>
+<footer>
+  <p>© 2026 - Delivery da Alê • Todos os direitos reservados</p>
+</footer>
+
+<script>
+  function irPedido(produto) {
+    window.location.href = `pedidos.html?produto=${encodeURIComponent(produto)}`;
+  }
+</script>
+<script>
+
+const produtos = [
+  {nome:"Fricassé de Frango", preco:25},
+  {nome:"Prato Combinado", preco:20},
+  {nome:"Feijoada Completa", preco:20},
+  {nome:"Lasanha", preco:25},
+  {nome:"Parmegiana Filé Mignon", preco:30},
+  {nome:"Parmegiana Frango", preco:30},
+  {nome:"Strogonoff Frango", preco:30},
+  {nome:"Strogonoff File Mignon", preco:30},
+  {nome:"Macarrao Cremoso", preco:30},
+  {nome:"Lasanha Frita", preco:30},
+  {nome:"Lasanha Bolonhesa", preco:30},
+  {nome:"Lasanha Presunto e Queijo", preco:30}
+
+];
+
+let pedido = [];
+
+function alterar(nome, preco, valor){
+
+  let item = pedido.find(p => p.nome === nome);
+
+  if(item){
+    item.qtd += valor;
+    if(item.qtd <= 0){
+      pedido = pedido.filter(p => p.nome !== nome);
+    }
+  } else if(valor > 0){
+    pedido.push({nome, preco, qtd:1});
+  }
+
+  atualizarTela();
+}
+
+function atualizarTela(){
+
+  document.querySelectorAll(".controle span").forEach(span=>{
+    span.innerText = 0;
+  });
+
+  pedido.forEach(item=>{
+    document.querySelectorAll(".item").forEach(card=>{
+      let titulo = card.querySelector("h3").innerText;
+      if(titulo === item.nome){
+        card.querySelector(".controle span").innerText = item.qtd;
+      }
+    });
+  });
+}
+
+function finalizar(){
+
+  if(pedido.length === 0){
+    alert("Escolha pelo menos um item!");
+    return;
+  }
+
+  localStorage.setItem("pedido", JSON.stringify(pedido));
+  window.location.href = "pedidos.html";
+}
+
+</script>
+
+</body>
+</html>
