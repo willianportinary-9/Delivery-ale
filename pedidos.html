@@ -31,8 +31,25 @@ body {
 
 .tipo-opcao {
   display: flex;
-  align-items: center;
-  gap: 4px;
+  justify-content: space-between;
+  margin-top: 10px;
+}
+.input-acrescimo{
+   display: flex;
+  justify-content: space-between;
+  margin-top: 10px;
+
+}
+.label-acrescimo{
+   display: flex;
+  justify-content: center;
+  margin-top: 10px;
+}
+.conteiner-acrescimo, label{
+ display: flex;
+ justify-content: flex-start;
+ 
+  margin-top: 20px;
 }
 
 .overlay {
@@ -90,11 +107,16 @@ button {
   cursor: pointer;
 }
 
-.voltar {
-  text-align: center;
-  margin-top: 12px;
-
-
+.voltar a {
+  display: flex;
+  justify-content: center;
+  margin-top: 16px;
+  text-decoration: none;
+  background-color: #08461efd;
+color: #ffffff;
+padding: 10px;
+cursor: pointer;
+cursor: grab;
 }
 
 .topo {
@@ -145,13 +167,44 @@ button {
 <option value="">Selecione</option>
 <option value="dinheiro">Dinheiro</option>
 <option value="pix">Pix</option>
-
 </select>
+
+
 
 <div id="campoTroco" style="display:none;">
 <label>Troco para quanto?</label>
 <input type="text" id="troco">
 </div>
+
+<!--<label>Deseja acréscimos?</label>
+
+<div class="opcao-acrescimo">
+  <label>
+    <input type="radio" name="acrescimo" value="nao" onclick="toggleAcrescimos(false)">
+    Não
+  </label>
+
+  <label>
+    <input type="radio" name="acrescimo" value="sim" onclick="toggleAcrescimos(true)">
+    Sim
+  </label>
+</div> -->
+
+
+
+<!--<div class="conteiner-acrescimo" style="background-color: #5e5d5c60; border-radius: 5px; padding: 10px; " >
+<label>Acréscimos:</label><br>
+  <div class="label-acrescimo">
+  
+  <label>Frango</label>
+<input type="radio" class="input-acrescimo" value="Frango">
+
+<label>Carne</label>
+<input type="radio" class="input-acrescimo" value="Carne">
+
+
+</div>
+</div> -->
 
 <div class="tipo-container">
 
@@ -294,6 +347,7 @@ Subtotal: R$ ${totalProdutos.toFixed(2)}
 🚚 Tipo: ${tipo}
 👤 Nome: ${nome}
 💳 Pagamento: ${pagamento}
+➕ Acrecimos: ${pegarAcrescimos}
 📱 Pix para pagamento: 49.729.256/0001-23
 💰 Troco: ${pagamento === "dinheiro" ? troco : "Não precisa"}
 ${tipo === "entrega" ? `🏠 Endereço: ${endereco}\n📍 Bairro: ${bairro}` : "📍 Retirada no local"}

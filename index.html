@@ -299,11 +299,11 @@ max-width:450px;
       <div>
         <h3>Strogonoff File Mignon</h3>
         <p>Filé mignon, arroz e batata palha.</p>
-        <p class="preco">R$ 30,00</p>
+        <p class="preco">R$ 35,00</p>
       <div class="controle">
-      <button onclick="alterar('Strogonoff File Mignon',30,-1)">-</button>
+      <button onclick="alterar('Strogonoff File Mignon',35,-1)">-</button>
       <span id="Strogonoff File Mignon">0</span>
-      <button onclick="alterar('Strogonoff File Mignon',30,1)">+</button>
+      <button onclick="alterar('Strogonoff File Mignon',35,1)">+</button>
     </div>
       </div>
       
@@ -339,7 +339,7 @@ max-width:450px;
       
     </div>
     
-    <div class="item">
+    <!--<div class="item">
       <img src="img/lasanhafrita.jpg">
       <div>
         <h3>Lasanha Frita</h3>
@@ -352,7 +352,7 @@ max-width:450px;
     </div>
       </div>
       
-    </div>
+    </div>-->
 
     <div class="item">
       <img src="img/lasanhabolonhesa.png">
@@ -397,8 +397,8 @@ Finalizar Pedido
   function irPedido(produto) {
     window.location.href = `pedidos.html?produto=${encodeURIComponent(produto)}`;
   }
-</script>
-<script>
+
+
 
 const produtos = [
   {nome:"Fricassé de Frango", preco:25},
@@ -408,7 +408,7 @@ const produtos = [
   {nome:"Parmegiana Filé Mignon", preco:30},
   {nome:"Parmegiana Frango", preco:30},
   {nome:"Strogonoff Frango", preco:30},
-  {nome:"Strogonoff File Mignon", preco:30},
+  {nome:"Strogonoff File Mignon", preco:35},
   {nome:"Macarrao Cremoso", preco:25},
   {nome:"Lasanha Frita", preco:30},
   {nome:"Lasanha Bolonhesa", preco:25},
