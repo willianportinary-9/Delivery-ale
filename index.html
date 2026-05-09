@@ -198,8 +198,58 @@ max-width:450px;
   <div>🍽️ Todos os pratos servem 1 pessoa</div>
 </section>
 
+
 <div class="container" id="cardapio">
-  <h2>Cardápio</h2>
+  <div class="cardapio">
+  <h2 style="color: #f805f8; background-color: #ee82ee44;border-radius: 15px; "> Combos Dia das mães ❤</h2>
+  <div class="item" style="background-color: rgb(236, 180, 236);">
+      <img src="img/combop.png" style="height: 100%;">
+      <div>
+        <h3>Combo P</h3>
+        <p>Lasanha, estrogonofe ou fricassê | Serve 2 pessoas.</p>
+        <p class="preco">R$ 40,00</p>
+      <div class="controle">
+      <button onclick="alterar('Combo P',40,-1)">-</button>
+      <span id="Combo P">0</span>
+      <button onclick="alterar('Combo P',40,1)">+</button>
+    </div>
+      </div>
+      
+    </div>
+  <div class="item" id="cardapio">
+    <div class="item" style="background-color: rgb(236, 180, 236);">
+      <img src="img/combop.png" style="height: 100%;">
+      <div>
+        <h3>Combo M</h3>
+        <p>Lasanha, estrogonofe ou fricassê | Serve até 4 pessoas.</p>
+        <p class="preco">R$ 60,00</p>
+      <div class="controle">
+      <button onclick="alterar('Combo M',60,-1)">-</button>
+      <span id="Combo M">0</span>
+      <button onclick="alterar('Combo M',60,1)">+</button>
+    </div>
+      </div>
+     </div>
+    </div>
+    <div class="item" style="background-color: rgb(236, 180, 236);">
+      <img src="img/combop.png" style="height: 100%;">
+      <div>
+        <h3>Combo G</h3>
+        <p>Lasanha, estrogonofe ou fricassê | Serve de 6 a 8 pessoas.</p>
+        <p class="preco">R$ 80,00</p>
+      <div class="controle">
+      <button onclick="alterar('Combo G',80,-1)">-</button>
+      <span id="Combo G">0</span>
+      <button onclick="alterar('Combo G',80,1)">+</button>
+    </div>
+      </div>
+      </div>
+    </div>
+</div>
+
+
+<div class="container" id="cardapio">  
+<h2>Cardápio</h2>
 
   <div class="cardapio">
 
@@ -248,7 +298,7 @@ max-width:450px;
       </div>
       
     </div>
-
+</div>
 
     <div class="item">
       <img src="img/marmita7parmegiana.jpg">
@@ -412,7 +462,10 @@ const produtos = [
   {nome:"Macarrao Cremoso", preco:25},
   {nome:"Lasanha Frita", preco:30},
   {nome:"Lasanha Bolonhesa", preco:25},
-  {nome:"Lasanha Presunto e Queijo", preco:25}
+  {nome:"Lasanha Presunto e Queijo", preco:25},
+  {nome:"Combo P", preco:40},
+  {nome:"Combo M", preco:60},
+  {nome:"Combo G", preco:80}
 
 ];
 
